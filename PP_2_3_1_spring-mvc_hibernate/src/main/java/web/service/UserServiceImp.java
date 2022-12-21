@@ -25,14 +25,14 @@ public class UserServiceImp implements UserService {
         return this.userDao.readListUsers();
     }
     @Transactional
-    public void update(long id, User updatedUser){
+    public void update(long id, User updatedUser) {
         this.userDao.update(id,updatedUser);
     }
     @Transactional
-    public void delete(long id){
+    public void delete(long id) {
         this.userDao.delete(id);
     }
-    @Transactional
+    @Transactional(readOnly = true)
     public User show(long id) {
         return this.userDao.show(id);
     }

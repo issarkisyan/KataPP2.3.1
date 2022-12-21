@@ -11,14 +11,12 @@ import web.service.UserServiceImp;
 @Controller
 @RequestMapping("/users")
 public class UserController {
-    @Autowired
-    private UserService userService;
-/*
-    public UserController(UserServiceImp userServiceImp) {
-        this.userServiceImp = userServiceImp;
+    private final UserService userService;
+
+    public UserController(UserService userService) {
+        this.userService = userService;
     }
 
- */
 
     @GetMapping()
     public String readList(Model model) {
@@ -63,17 +61,3 @@ public class UserController {
 }
 
 
-
-    /*
-    @GetMapping( "/cars")
-    public String getCarsByCount(@RequestParam(value = "count", defaultValue = "0") int count, Model model) {
-        if(count == 0) {
-            model.addAttribute("all", userServiceImp.getCars());
-        } else {
-            model.addAttribute("cou", userServiceImp.getCars(count));
-        }
-        return "cars";
-    }
-}
-
-     */

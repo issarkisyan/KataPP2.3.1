@@ -8,7 +8,6 @@ import web.model.User;
 import javax.persistence.*;
 import java.util.List;
 @Repository
-@Transactional
 public class UserDaoImp implements UserDao {
     @PersistenceContext
     private EntityManager entityManager;
@@ -18,22 +17,8 @@ public class UserDaoImp implements UserDao {
 
     public List<User> readListUsers() {
         return entityManager.createQuery("FROM User", User.class).getResultList();
-        /*
-        Query query =  this.entityManager.createQuery("from User",User.class);
-        return query.getResultList();
-
-         */
-    }
-/*
-    public void updateUser(User user) {
-        entityManager.refresh(user);
     }
 
-    public void deleteUser(User user) {
-        entityManager.remove(user);
-    }
-
- */
     public User show(long id) {
         return readListUsers().stream().filter(user -> user.getId() == id).findAny().orElse (null);
     }
